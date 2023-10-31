@@ -15,7 +15,7 @@ var con = mysql.createConnection({
   password: "root",
   database: "noodle_dhbw"
 });
-db.connect((err) => {
+con.connect((err) => {
   if (err) throw err;
   console.log('Connected to MySQL database');
 });
@@ -79,6 +79,7 @@ app.post('/login', (req, res) => {
   });
 });
 
+
 // Dashboard page
 app.get('/dashboard', (req, res) => {
   if (req.session.loggedin) {
@@ -87,6 +88,20 @@ app.get('/dashboard', (req, res) => {
     res.send('Please log in to view this page.');
   }
 });
+
+app.get('/', (req, res) => {
+  // Retrieve user's shopping list from the database and render it in index.ejs
+});
+
+app.post('/add-item', (req, res) => {
+  // Handle adding items to the shopping list
+});
+
+app.post('/remove-item', (req, res) => {
+  // Handle removing items from the shopping list
+});
+
+// Add more routes as needed.
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
